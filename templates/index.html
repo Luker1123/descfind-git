@@ -1,0 +1,40 @@
+<doctype html="">
+  
+  <title>Description Search</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='CSS/format.css') }}">
+
+<h2>Description Search</h2>
+
+
+
+{% from "_formhelpers.html" import render_field %}
+<form method="post">
+<dl>
+  {{ render_field(form.select) }}
+  <p>
+    <div class="button-container">
+    {{ render_field(form.search) }}
+    <input type="submit" value="Search" name = "Action">
+    <form method="post" action="/">
+      <input type="submit" value="Inventory" name="Action"/>
+      </form>
+    </div>
+  </p>
+</dl>
+<p>
+  
+</p></form>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  <ul class="flashes">
+    <div class="container">
+  {% for message in messages %}
+    <div class ="row">{{ message }}</div>
+    
+  {% endfor %}
+</div>
+  </ul>
+{% endif %}
+{% endwith %}
+
+</doctype>

@@ -1,0 +1,104 @@
+{% extends 'desctest.html' %}
+
+
+{% block title %} Home {% endblock %}
+
+
+{% block body %}
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <table class="table table-success table-striped table-hover" border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>URL</th>
+                    
+                     <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for table in data %}
+                    <tr>
+                        <td>{{table.name}}</td>
+                        <td>{{table.desc}}</td>
+                        <td>{{table.url}}</td>
+                       
+                        <td>
+                            <a href="/update/{{table.name}}" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modaledit{{table.name}}">Update</a>
+                             <a href="/delete/{{table.name}}" class="btn btn-danger" onclick="return confirm('Are you sure to delete ?')">Delete</a>
+                        </td>
+                    </tr>
+
+
+                     <!-- update model -->
+ <div id="modaledit{{table.name}}" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h4 class="modal-title">Update desc</h4>
+         </div>
+         <div class="modal-body">
+
+            <form action="{{url_for('update')}}" method="POST">
+
+
+               <div class="form-group">
+
+                  <label>Description:</label>
+		           <input type="hidden"  name="Name" value="{{table.name}}">
+                  <input type="text" class="form-control" name="Description" value="{{table.desc}}" >
+
+               </div>
+
+
+
+                <div class="form-group">
+                  <label>URL:</label>
+                  <input type="text" class="form-control" name="theurl" value="{{table.url}}">
+               </div>
+
+                 
+
+               <div class="form-group">
+                  <button class="btn btn-primary mt-4" type="submit">Update desc</button>
+               </div>
+
+
+            </form>
+
+
+         </div>
+
+
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+         </div>
+
+
+      </div>
+
+
+   </div>
+
+
+</div>
+
+
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

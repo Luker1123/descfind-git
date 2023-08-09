@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <form method="post" action="/">
+            <input type="submit" value="Home" name="Action"/>
+            </form>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#insert_modal">Add Table</button>
+        </li>
+      </ul>
+    </div>
+  
+  </nav>
+  
+  
+  
+  
+
+  <div id="insert_modal" class="modal fade" role="dialog">
+     <div class="modal-dialog">
+        <div class="modal-content">
+           <div class="modal-header">
+              <h4 class="modal-title">Add Table</h4>
+           </div>
+           <div class="modal-body">
+  
+              <form action="{{url_for('insert_desc2')}}" method="POST">
+  
+  
+                 <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" class="form-control" name="Name" required="1">
+                 </div>
+  
+  
+                  <div class="form-group">
+                    <label>Description:</label>
+                    <input type="text" class="form-control" name="Description" required="1">
+                 </div>
+  
+                   <div class="form-group">
+                    <label>URL:</label>
+                    <input type="text" class="form-control" name="URL" required="1">
+                 </div>
+  
+                 <div class="form-group">
+                    <button class="btn btn-primary mt-4" type="submit">Add Table</button>
+                 </div>
+  
+  
+              </form>
+  
+  
+           </div>
+  
+  
+           <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  
+           </div>
+  
+        </div>
+     </div>
+  
+  </div>

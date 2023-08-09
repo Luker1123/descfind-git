@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Descriptions</title> 
+        <h2>Inventory</h2>
+        <form method="post" action="/">
+        <input type="submit" value="Home" name="Action"/>
+        </form>
+	</head>
+	<style>
+		table, th, td {
+		border:1px solid black;
+		}
+		</style>
+	<body>
+		<table style="width:100%">
+			<tr>
+			<th>Table</th>
+			<th>Description</th>
+			<th>URL</th>
+			</tr>
+			{%for table in data%}
+			<tr>
+				<td>{{table.name}}</td>
+				<td>{{table.desc}}</td>
+				<td>{{table.url}}</td>
+				</tr>
+			{%endfor%}
+		</table>		
+	</body>
+</html>
