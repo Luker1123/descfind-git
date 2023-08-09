@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from flask_sqlalchemy import SQLAlchemy
 from flask import g 
-#from SQLAlchemy import create_engine
+
 class DescriptionSearch(Form):
     choices = ['Default','All Sources']
     select = SelectField('Search specification:', choices=choices)
