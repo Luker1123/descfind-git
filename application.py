@@ -154,16 +154,10 @@ def get_description(table_name):
 application = Flask(__name__)
 
 application.secret_key = "super secret key"
-"""
-
-"""
-
 rds_username = 'luker1123'
 rds_password = 'password'
 rds_endpoint = 'descdb.cefwszk3tjwe.us-east-1.rds.amazonaws.com'
 rds_database = 'descdb'
-
-
 
 # Create the SQLAlchemy engine
 application.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+mysqldb://{rds_username}:{rds_password}@{rds_endpoint}/{rds_database}"
@@ -179,8 +173,6 @@ class Desc(db.Model):
         self.name = name 
         self.url = url 
         self.desc = desc 
-
-   
 
 def in_db(name):
     with application.app_context():
@@ -211,10 +203,7 @@ def excel_to_db_run():
             url = str(row['URL'])
             desc = str(row['Description'])
             insert_desc(name,desc,url)
-        
-
-
-
+    
 @application.before_request
 def before_request():
     if not hasattr(g, 'db'):
